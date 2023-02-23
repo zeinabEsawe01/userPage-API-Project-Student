@@ -8,12 +8,17 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
-
+<script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
 </head>
 
 <body>
     <div class="container">	
-        <div class="user-container"></div>	
+        <div class="user-container">
+        </div>	
         <div class="quote-container"></div>	
         <div class="content-container">	
             <div class="pokemon-container"></div>	
@@ -25,10 +30,50 @@
             </div>	
         </div>	
         <div class="buttons">	
-            <button>Load User Data</button>	
-            <button>Display User</button>	
+            <button id="load">Load User Data</button>	
+            <button id="display">Display User</button>	
         </div>	
     </div>
+
+
+    <script id="user-template" type="text/x-handlebars-template">   
+        <img src={{img}} id="profile-pic" />
+        <br />
+        <p class="user-info">{{firstName}} {{lastName}}</p><br />
+        <p class="user-info">{{city}} , {{country}}</p>
+     </script>
+
+     <script id="quote-template" type="text/x-handlebars-template">
+        <p>favorite Quote</p>   
+        <div>{{quote}}</div><br />
+     </script>
+
+     <script id="friends-template" type="text/x-handlebars-template">
+       {{#each friends}}
+       <ul>
+        <li>{{firstname}} {{lastname}}</li>
+       </ul>
+       {{/each}}
+     </script>
+
+
+     <script id="pokemon-template" type="text/x-handlebars-template">
+        <img id="pokemon-image" src={{url}} >
+        <p class="pokemon-text">Favorite Pokemon: {{name}}</p>
+      </script>
+
+     <script id="aboutSen-template" type="text/x-handlebars-template">
+        <p class="meat-text">{{aboutSen}}</p>
+      </script>
+      
+     
+
+
+
+
+    <script src="Renderer.js"></script>
+    <script src="APIManager.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
